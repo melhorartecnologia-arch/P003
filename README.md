@@ -8,7 +8,6 @@ Sistema web para upload, processamento, classificação e consulta de documentos
 - **Backend**: Node.js + Express + TypeScript
 - **Banco de Dados**: PostgreSQL 16 (full-text search em português)
 - **Fila**: BullMQ + Redis (processamento assíncrono de arquivos)
-- **Containerização**: Docker + Docker Compose
 
 ## Funcionalidades
 
@@ -21,20 +20,13 @@ Sistema web para upload, processamento, classificação e consulta de documentos
 - Detecção de duplicatas via hash SHA-256
 - Exclusão lógica de documentos
 
+## Pré-requisitos
+
+- Node.js 20+
+- PostgreSQL 16+
+- Redis 7+
+
 ## Início Rápido
-
-### Com Docker Compose
-
-```bash
-cd docker
-docker-compose up -d
-```
-
-O sistema estará disponível em:
-- Frontend: http://localhost:3000
-- API: http://localhost:3001
-
-### Desenvolvimento Local
 
 **Backend:**
 ```bash
@@ -89,7 +81,7 @@ npm run dev
 │   │   │   ├── documents/   # Documentos + Worker de processamento
 │   │   │   └── audit/       # Logs de auditoria
 │   │   └── database/        # Migrations e seeds
-│   └── Dockerfile
+│   └── database/        # Migrations e seeds
 ├── frontend/
 │   ├── src/
 │   │   ├── components/      # Componentes React
@@ -97,7 +89,5 @@ npm run dev
 │   │   ├── services/        # Serviços de API
 │   │   ├── contexts/        # Contextos React (Auth)
 │   │   └── types/           # Tipos TypeScript
-│   └── Dockerfile
-└── docker/
-    └── docker-compose.yml   # Orquestração completa
+│   └── package.json
 ```
